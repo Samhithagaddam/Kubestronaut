@@ -8,5 +8,6 @@ Later it introduced container Runtime Interface(CRI) through which any vendor ca
 Docker = runC + ContainerD + more features
 runC was thr container runtime which was managed by deamon ContainerD.
 If we want to run containers alone, we can do it using ContainerD runtime.
--'ctr' is default command line tool which comes with containerD
--'nerdctl' tool is one of the suggested cmd tools to go with containerD
+-'ctr' is default command line tool which comes with containerD for debugging
+-'nerdctl' tool is one of the suggested cmd tools to go with containerD for all operations
+-'crictl' is a tool designed by kuberenetes for debugging which goes with all the runtimes which meet oci standards
