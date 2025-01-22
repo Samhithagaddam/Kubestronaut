@@ -1,0 +1,12 @@
+Kubernetes initially worked only with Docker.
+Later it introduced container Runtime Interface(CRI) through which any vendor can work as kubernetes container runtime by following (Open Container Initiative)OCI standards.
+-->OCI standards
+  1. imagespec
+  2. Runtimespec
+
+
+Docker = runC + ContainerD + more features
+runC was thr container runtime which was managed by deamon ContainerD.
+If we want to run containers alone, we can do it using ContainerD runtime.
+-'ctr' is default command line tool which comes with containerD
+-'nerdctl' tool is one of the suggested cmd tools to go with containerD
