@@ -1,0 +1,50 @@
+step 1:
+ take the .csr file and encode it using base64.
+ Eg: <cat akshay.csr | base64 -w 0>
+
+Step 2:
+Create an yaml object as below and apply it to create the certificate signing request
+Manifest:
+
+---
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: akshay
+spec:
+  groups:
+  - system:authenticated
+  request: <Paste the base64 encoded value of the CSR file>
+  signerName: kubernetes.io/kube-apiserver-client
+  usages:
+  - client auth
+
+---
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: akshay
+spec:
+  groups:
+  - system:authenticated
+  request: |
+    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ1ZqQ0NBVDRDQVFBd0VURVBNQTBHQTFVRUF3d0dZV3R6YUdGNU1JSUJJakFOQmdrcWhraUc5dzBCQVFFRgpBQU9DQVE4QU1JSUJDZ0tDQVFFQXdqNzcwWWNKNHpvemxTd1RuYnhKeDZCR0hZemQ1bUFqUUhIZVcrMGNZT3lxCkJ3Yzk4RHJwenBMejh2TmJyWXRIMXZ6QzY1VnhaRy9Ec3J4b3lIcnZrcjczTnNOL3RIMjFlSDZqcUgrbUY1aGkKNW1aVUJtTkpudUtSWTdZY21CTkpNQU9Rc3VCR0xicHcxU0RzWlpMVm4zWUYwYitXb3grTFluMm9IV1ZGOHRQUApIcWIwU2ZCM1N5Q2FrRjZKM2daK0l1eGNMS3dYd3VCdmprc2x2SnpPMWFBZXdyVGY4eWpUaUtRbmQyUzFxcS9NCkxEWHYvRENQamZYMTNZakRFWStXUHd5OWxBUWxuam4wdUpwNS85NTJHT1JYMmRkOHM4NEpqQTdaVUo5RmVGeDEKQktWdkhjRk1oankxOFJUSm80UTB5cjJvVmdJRXUrTitnUWpPblhnRUhRSURBUUFCb0FBd0RRWUpLb1pJaHZjTgpBUUVMQlFBRGdnRUJBSGd3ZkdzQkprNGcxVVdMT1kvTlZIOCtaTFZkU2RUOGlFQzlEc25OK1c2QVlYclp2R2l5ClhyU09udXpuUjV1VCtDU04yZG5BRGREbUU4SVpKbWhZbzAzRWtBellESWYzUGgzUkp1VitYaHc5dXRrQ2dDaFcKR3ZtNDlyOFlQZWk3cERoWkFKNXlYZkYreGpSVmFjNXNDZlExSVN1NFJWZlVYaDhwc2pwam9MeUszV0pIWk13Mgo0Z2xvMWRNVGV4ZUovV2YwcXM0QWN0QktaRGhSS2lRMEN3cFpnTXE1RUxFbUhxbzdEWWNxTk1tYWlaTlBpN3BXCjF6SVJkN3d6ajF2cUptRHBMejhKbnVYLytuMmI0UExkQVNtY3N6NEU1K1FiRDkrUmtHSFdFUGVCRFVwMlhKMHMKczhMMEc2YWFXR2hmNUxkTzNkbTcxZWVmMm5kVDhBQkpsdjg9Ci0tLS0tRU5EIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLQo=
+  signerName: kubernetes.io/kube-apiserver-client
+  usages:
+  - client auth
+
+Step 3:
+ CHeck the status of signing request
+ << kubectl get csr >>
+
+Step 4:
+ Approve the CSR
+ kubectl certificate approve <certificate-signing-request-name>
+
+Step 5:
+ Deny a CSR
+ << kubectl certificate deny agent-smith >>
+
+Step 6:
+ Delete the csr object
+ << kubectl certificate deny agent-smith >>
