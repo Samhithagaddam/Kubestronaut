@@ -1,0 +1,26 @@
+Steps to download and install VPA on cluster.
+
+Clone the VPA Repository and Set Up the Vertical Pod Autoscaler
+You are required to clone the Kubernetes Autoscaler repository into the /root directory and set up the Vertical Pod Autoscaler (VPA) by running the provided script.
+
+Steps:
+Clone the repository:
+
+First, navigate to the /root directory and clone the repository:
+
+  git clone https://github.com/kubernetes/autoscaler.git
+
+Navigate to the Vertical Pod Autoscaler directory:
+
+After cloning, move into the vertical-pod-autoscaler directory:
+
+   cd autoscaler/vertical-pod-autoscaler
+
+Run the setup script:
+
+Execute the provided script to deploy the Vertical Pod Autoscaler:
+
+   ./hack/vpa-up.sh
+
+By following these steps, the Vertical Pod Autoscaler will be installed and ready to manage pod resources in your Kubernetes cluster.
+
