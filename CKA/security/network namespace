@@ -1,0 +1,18 @@
+step 1: create an interface for one namespace
+  < ip link add veth-red type veth peer name veth-blue >
+  #this will create two virtual ethernets, one for red and the other for blue and link them for communication
+
+Step 2: Now attach the interface veth-red to red namespace and interface veth-blue to blue interface
+  < ip link set veth-red netns red >
+  < ip link set veth-blue netns blue >
+
+Step 3: Assign ip-address for each interface within each namespace
+  < ip -n red addr add 192.168.2.10 dev veth-red >
+  < ip -n blue addr add 192.168.2.11 dev veth-blue >
+
+Step 4: Bring the interfaces up
+  < ip -n red link set veth-red up >
+  < ip -n blue link set veth-blue up >
+
+Step 5 : ping blue from red
+  < ip -n red ping 192.168.2.11 >
