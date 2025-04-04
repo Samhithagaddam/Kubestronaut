@@ -1,0 +1,26 @@
+Prerequisites:
+1. Download and install virtual box
+2. Download and install vagrant
+
+Step 1:
+Clone the repository https://github.com/kodekloudhub/certified-kubernetes-administrator-course
+   << git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git >>
+
+Step 2:
+go to path kubeadm-clusters/virtualbox/Vagrantfile and view the file for vagrant configuration
+<< vi Vagrantfile>>
+
+Step 3:
+check the status of virtual machines using below command
+<< vagrant status >>
+
+Step 4:
+Bring up the VM's as specified in vagrantfile using below command
+<< vagrant up >>
+
+Step 5:
+Connect to any vm using below command
+<< vagrant ssh kubemaster >>
+
+
+
